@@ -1,0 +1,17 @@
+language: python
+python:
+    - "3.7"
+install:
+    #- pip install pipenv
+    #- pipenv install
+    - pip install -r requirements.txt
+deploy:
+  provider: gcs
+  access_key_id: GOOG1EEXQPFJ3IWI2KH36KANPJJ34Q5IPIUFOA3JQMCQ62PTYJ4MPBGC7AJJQ
+  secret_access_key:
+    secure: R9H4AqIVNJGHnvKSR2/ZZc+dqLwxjfimb2izXVIaY4Yod3l8Q2UhQaHlpf3Me+ic1whyUaeITx1IDr3I9ovTwnyhAXwX21lG32LaUF1HodHMNBc2GwVIQ0Iq9hiD7F4d7yDWAFTvgdf++AQvxgEt2nm71V2JosbyH3iDsPSWCltCqSC88s13fBC3r5qyETHMFaeIXtqhHTs/YM1XZtC87mEBVUv0ymcekxImJv+Cc+hEIaJFtvioUVuJHYNlAqSkF+uk/lVFxtlHIs1v0nXMGV3//xdHADrIS/Wl2gJLomkriBVuj/VwqYQUwkgaTAqWzAMYJCpnynTf7+QWBq6Sw9hymr4uTWqbh+sSMk6CkLBNa4a2UxPSiKmpoTqCDs8HdkP9ZdHvW02AL2ps3QwLr6N1vwiT0zdparHlFmibJ+D/sjEtN/d9dLtcLPiM9/4M96uZ2tSHQjdX9edUHAgwkBxMe+S1VLChE6wOq+MtdtXj8X+Fgl231jy4t1GxtVhjdo7WQe8YcN4TebX4g8KdtIQZS/AXgzl/plHXuawRAGqaxeK/6HF1zpJnhI/li7Edyvjo9uIMZfW+jhBsaTXbQUdPkXX1XnRqNDVvpZIPlW2XH4la6gag1st7OV7Tqxs/exVQOWDbM3eCGVR3BfxC6fAUdJ7UifyAqqZBYfCrL8w=
+  bucket: ucf-data
+  on:
+    repo: joshuap2613/Robinhood_Arb
+script:
+    - gsutil ls gs://ucf-data
