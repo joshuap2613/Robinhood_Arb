@@ -3,7 +3,8 @@ python:
 - '3.7'
 install:
 - pip install -r requirements.txt
-- gcloud auth activate-service-account trader-key@ucf-trading.iam.gserviceaccount.com --key-file=ucf-trading-ed09408582af.json --project=ucf-trading
+- gcloud auth activate-service-account trader-key@ucf-trading.iam.gserviceaccount.com
+  --key-file=ucf-trading-ed09408582af.json --project=ucf-trading
 deploy:
   provider: gcs
   access_key_id: GOOG1EEXQPFJ3IWI2KH36KANPJJ34Q5IPIUFOA3JQMCQ62PTYJ4MPBGC7AJJQ
@@ -15,6 +16,13 @@ deploy:
   acl: public_read_write
 script:
 - gsutil ls gs://ucf-data
+- cp data.pickle /home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/robin_stocks/
+- python test/robin_login.py
 before_install:
 - openssl aes-256-cbc -K $encrypted_ea7579a62e58_key -iv $encrypted_ea7579a62e58_iv
-  -in ucf-trading-ed09408582af.json.enc -out ucf-trading-ed09408582af.json -d
+  -in secrets.tar.enc -out secrets.tar -d
+- tar xvf secrets.tar
+env:
+  global:
+  - secure: eUOdEdfCg8vQEYhfzgzSQeRqZKCBC0WLwh4va3xZe/P+J+QDI7SfmZoiNcMnrhIuaJ5o4BHE4LOh5vb26LXhlyxTDXXJQuRw+EC7fLurbPxPkeSbY65XlnjmGn6wlxqRhwOTbndPQS4KHisPWl2VYH/Jb1Crcq4yDMOFC89Fl8qzcxtAY72lgv6dvbDIBhqDlJHsbiekt9otbk1oIHLuj7o+Dw4s3Ikh4dgNattCVfuF+BqoiEI6IWkB70udfUnZYChVH0as3hZgzJaHTIYJ6U2GviaUZI32n8miHhibFdJXCLTFsV3Wn7J6GhUy1p4QYPPSXKYYNcpgQ3tqqvr3ATuq2ZpYG1y/LgttDQ0XXuPyv0kOV70LdBvkWl+npFSG/lzLzMhmz3UnbbuOhx+EV7ZOtB0vv4WmsIvXI6T/MthiGkOeNkJRSmgGQRJmJSwNElXIOkANm+e1SP32J+i26EdFh0r90JcIevLn+GuOEC06TIHWXjCZvdshjBMZ+dLKLS7ZP24xLsUliGAXKn+zGYkkSeUg4WdUuGVJHLDV+HKcNRt3sZHD18c5kHJ98kb7FK07V0o1pjcJwswcFgRkGzBkfbRX8NHH22hm4vD2mtsKZKVgwyLwAienhka9+4hgr96xQW4MEbK7uDE/rRWhE56ZSKs5xjLXt3uYgWYf62w=
+  - secure: kDE84cN3rzAYqV8E12J1yxw0JUcKelQalGcDcI5f758xjvR1UNaVftUODrli79R4T4Y7ECbxV9t4d34yhL4jcY86i7Qu1Ql1w8XMZhaizvFS3Z6lGUAO/qF5zJvFmPeLeU1VjvBpsenoi/EdeWHCHCGdzqkCIzwfuOeZoHyEaoHuEauWH7b2A4+E7I4j7PvKN+BqdhvXBLG1zvvosS3ixGjQys73xPATD1yjjug4aa1bB/E58zSO/GR01mh/pxArzDcjJxJoWBAN8HX0kHbi5hqj2m0oZc8upq2GQbpHRA/JngLPa7PEcVBokp63V/kVQeSAqW3FcRW5KvNU80YuBIiLo66pS6TGFl5V7SxcxcUom3wUV6K7u0MNQ//JmyAkmHDTSo6cQlNU6TSam32OaPv//ZLY2ABbxFFrgO97sbanKK8pDYocw5wRWBvIyi+k20rQQGHTgbfomzSMCPTZwgG79oUl65T/0oYVztmyOKQyGjhfQdJT6flpiRvrr44ybAGyRh5DpDLl1Z34YT/0+rCIo10yVXhty3pSYPUpVdQ4i95gzM1T0hIYDNdj8OL3+UJqTTPzD2lEMV8+UmVlQv9lUBnx6WnmM6VcOYdWCnbCDJfZnyspR+qltRsNA/M0bU2wzNXLlIrEtaL+O9e8iKfP/mqVi+12MDwu9drknuE=
