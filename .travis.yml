@@ -20,9 +20,9 @@ script:
 - python test/robin_login.py
 before_install:
 - openssl aes-256-cbc -K $encrypted_ea7579a62e58_key -iv $encrypted_ea7579a62e58_iv
-  -in data.pickle.enc -out data.pickle -d
-- openssl aes-256-cbc -K $encrypted_ea7579a62e58_key -iv $encrypted_ea7579a62e58_iv
   -in ucf-trading-ed09408582af.json.enc -out ucf-trading-ed09408582af.json -d
+- openssl aes-256-cbc -K $encrypted_ea7579a62e58_key -iv $encrypted_ea7579a62e58_iv
+  -in data.pickle.enc -out data.pickle -d
 env:
   global:
   - secure: eUOdEdfCg8vQEYhfzgzSQeRqZKCBC0WLwh4va3xZe/P+J+QDI7SfmZoiNcMnrhIuaJ5o4BHE4LOh5vb26LXhlyxTDXXJQuRw+EC7fLurbPxPkeSbY65XlnjmGn6wlxqRhwOTbndPQS4KHisPWl2VYH/Jb1Crcq4yDMOFC89Fl8qzcxtAY72lgv6dvbDIBhqDlJHsbiekt9otbk1oIHLuj7o+Dw4s3Ikh4dgNattCVfuF+BqoiEI6IWkB70udfUnZYChVH0as3hZgzJaHTIYJ6U2GviaUZI32n8miHhibFdJXCLTFsV3Wn7J6GhUy1p4QYPPSXKYYNcpgQ3tqqvr3ATuq2ZpYG1y/LgttDQ0XXuPyv0kOV70LdBvkWl+npFSG/lzLzMhmz3UnbbuOhx+EV7ZOtB0vv4WmsIvXI6T/MthiGkOeNkJRSmgGQRJmJSwNElXIOkANm+e1SP32J+i26EdFh0r90JcIevLn+GuOEC06TIHWXjCZvdshjBMZ+dLKLS7ZP24xLsUliGAXKn+zGYkkSeUg4WdUuGVJHLDV+HKcNRt3sZHD18c5kHJ98kb7FK07V0o1pjcJwswcFgRkGzBkfbRX8NHH22hm4vD2mtsKZKVgwyLwAienhka9+4hgr96xQW4MEbK7uDE/rRWhE56ZSKs5xjLXt3uYgWYf62w=
