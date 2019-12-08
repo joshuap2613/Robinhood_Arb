@@ -29,8 +29,8 @@ for t in tickers:
     #print(json_data)
     if json_data['data'] != None and json_data['data']['dividends']['rows'] != None:
         rows = json_data['data']['dividends']['rows']
+        print(rows[0])
         for row in rows:
-            print(row)
             f.write(t)
             f.write(",")
             for field in fields:
