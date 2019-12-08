@@ -5,8 +5,8 @@ import pandas as pd
 
 fields = ['exOrEffDate', 'type', 'amount', 'declarationDate', 'recordDate', 'paymentDate']
 
-TICKER_PATH = "../fixtures/tickers.txt"
-OUTPUT_PATH = "../fixtures/dividends.csv"
+TICKER_PATH = "fixtures/tickers.txt"
+OUTPUT_PATH = "fixtures/dividends.csv"
 f = open(OUTPUT_PATH, "w")
 f.write("ticker,")
 for field in fields:
@@ -38,8 +38,8 @@ for t in tickers:
                 f.write(',')
             f.write('\n')
 f.close()
-prev_data = pd.read_csv("../prev_div.csv")
-cur_data = pd.read_csv("../fixtures/dividends.csv")
+prev_data = pd.read_csv("prev_div.csv")
+cur_data = pd.read_csv("fixtures/dividends.csv")
 pd.concat([prev_data,cur_data]).drop_duplicates().reset_index(drop=True)
-pd.to_csv("../fixtures/dividends.csv")
+pd.to_csv("fixtures/dividends.csv")
 print('done')
