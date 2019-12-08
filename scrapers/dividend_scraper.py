@@ -40,6 +40,6 @@ for t in tickers:
 f.close()
 prev_data = pd.read_csv("prev_div.csv")
 cur_data = pd.read_csv("fixtures/dividends.csv")
-pd.concat([prev_data,cur_data]).drop_duplicates().reset_index(drop=True)
-pd.to_csv("fixtures/dividends.csv")
+df = pd.concat([prev_data,cur_data]).drop_duplicates().reset_index(drop=True)
+df.to_csv("fixtures/dividends.csv")
 print('done')
