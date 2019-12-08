@@ -1,6 +1,7 @@
 alpaca-trade-api==0.38
 asyncio-nats-client==0.9.2
 blinker==1.4
+beautifulsoup4==4.8.1
 cachetools==3.1.1
 certifi==2019.6.16
 chardet==3.0.4
