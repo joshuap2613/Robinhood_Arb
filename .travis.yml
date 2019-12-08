@@ -16,8 +16,10 @@ deploy:
   acl: public_read_write
 script:
 - gsutil ls gs://ucf-data
+- gsutil cp gs://ucf-data/prupes/dividends/dividends.csv prev_div.csv
 - cp data.pickle /home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/robin_stocks/
-- python test/robin_login.py
+- python scrapers/dividend_scraper.py
+- gsutil cp fixtures/dividends.csv gs://ucf-data/prupes/dividends/dividends.csv
 before_install:
 - openssl aes-256-cbc -K $encrypted_ea7579a62e58_key -iv $encrypted_ea7579a62e58_iv
   -in secrets.tar.enc -out secrets.tar -d
