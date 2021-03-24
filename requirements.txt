@@ -45,7 +45,7 @@ PyTweening==1.0.3
 pytz==2019.2
 PyVirtualDisplay==0.2.1
 requests==2.22.0
-rsa==4.0
+rsa==4.1
 robin-stocks==0.9.9.5
 selenium==3.11.0
 six==1.12.0
